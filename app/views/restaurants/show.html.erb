@@ -1,0 +1,43 @@
+<div class="container mx-auto">
+<h2 Class="lead">---Restaurant Details---</h2>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Details</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+      <th scope="row"><%=@restaurant.id %></th>
+      <td><%= @restaurant.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Address</th>
+      <td><%= @restaurant.address %></td>
+    </tr>
+    <tr>
+       <th scope="row">Phone</th>
+     <td><%= @restaurant.phone_number %></td>
+    </tr>
+    <tr>
+       <th scope="row">Phone</th>
+     <td><%= @restaurant.phone_number %></td>
+    </tr>
+    <tr>
+       <th scope="row">Category</th>
+     <td><%= @restaurant.category %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+  <%= link_to "All the Restaurants", restaurants_path %> |
+  <%= link_to "Add", new_restaurant_path %> | <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
+  <%= link_to "Delete",
+     restaurant_path(@restaurant),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete the restaurant?"}
+  %>
+</div>

@@ -1,0 +1,43 @@
+<h1>Restaurant List</h1>
+
+<%= link_to "Add", new_restaurant_path %>
+
+<table class="table">
+  <thead>
+  <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Category</th>
+      <th scope="col">Edit?</th>
+      <th scope="col">Delete?</th>
+      <th scope="col">Review?</th>
+  </tr>
+  <% @restaurants.each do |restaurant| %>
+  <tr>
+   <td>
+       <%= restaurant.id %> </td>
+    <td>
+      <%= link_to restaurant.name, restaurant_path(restaurant) %> </td>
+    <td>
+      <%= restaurant.address %> </td>
+    <td>
+      <%= restaurant.phone_number %> </td>
+    <td>
+      <%= restaurant.category %> </td>
+    <td>
+      <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+    </td>
+    <td>
+      <%= link_to "Delete",
+     restaurant_path(restaurant),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure to delete the restaurant?"}
+  %> </td>
+    <td>
+    <%= link_to "Review", restaurant_reviews_path(restaurant_id: restaurant.id) %>
+     </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
